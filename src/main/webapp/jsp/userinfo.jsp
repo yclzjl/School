@@ -6,7 +6,7 @@
 <title></title>
 </head>
 <body>
-Hello,${user.userid }
+Hello,${user.userid }!
 <p><input type="button" onclick="quit();" value="退出"/></p>
 </br>
 <button onclick="abv();">今天是星期几？</button>
