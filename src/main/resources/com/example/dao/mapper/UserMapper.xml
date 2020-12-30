@@ -60,4 +60,7 @@
     from user
     where userid = #{userid} and password = #{password}
   </select>
+  <select id="getScoreByUserId" parameterType="String" resultType="java.util.Map">
+	{ call findscore(#{userid,jdbcType=VARCHAR,mode=IN}) }
+  </select>
 </mapper>

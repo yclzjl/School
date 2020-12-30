@@ -15,16 +15,21 @@ Hello,${user.userid }!
 
 <select id="sel" name="sel" >
 	<option value="">--选择</option>
-	<c:forEach items="${userlist}" var ="user">
-		<option>${user.userid }</option>
+	<c:forEach items="${stulist}" var ="student">
+		<option value="${student.sId }">${student.sName }</option>
 	</c:forEach>
 </select>
 <table id="tab1" hidden="true" border="1">
-	<tr>
-		<td>学科</td>
-		<td>分数</td>
-	</tr>
-	<tr id="txt"></tr>
+	<thead>
+		<tr>
+			<td>学生id</td>
+			<td>姓名</td>
+			<td>学科</td>
+			<td>分数</td>
+		</tr>
+	</thead>
+	<tbody>
+	</tbody>
 </table>
 </body>
 
@@ -64,7 +69,13 @@ $("#sel").change(function(){
 		dataType: "json",
 		success:function(data){
 			$("#tab1").show();
-			$("#txt").replaceWith('<tr><td>'+data.msg+'</td><td>sad</td></tr>');
+			var jsonobj = jQuery.parseJSON(data.data);
+			console.log(jsonobj.length);
+			var str = "";
+			for(var i = 0; i < jsonobj.length;i ++){
+				str = str + '<tr><td>'+jsonobj[i].s_id+'</td><td>'+jsonobj[i].s_name+'</td><td>'+jsonobj[i].c_name+'</td><td>'+jsonobj[i].s_score+'</td></tr>';
+			}
+			$("tbody").html(str);
 		}
 		
 	});

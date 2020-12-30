@@ -2,6 +2,7 @@ package com.example.dao.mapper;
 
 import com.example.dao.models.User;
 import java.util.List;
+import java.util.Map;
 
 public interface UserMapper {
     /**
@@ -50,4 +51,9 @@ public interface UserMapper {
      * @return
      */
     User checkUser(User record);
+    
+    /**
+     * @return
+     */
+    List<Map<String, Object>> getScoreByUserId(String userid);
 }
